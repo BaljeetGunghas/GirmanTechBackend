@@ -82,7 +82,7 @@ router.post('/get-user-list', async (req, res) => {
 router.get('/isdbConnected', async (req, res) => {
     const mongoURI = process.env.MONGOURI;
     try {
-        const con = await mongoose.connect(mongoURI);
+        // const con = await mongoose.connect(mongoURI);
         return res.json(
             {
                 output: 1,

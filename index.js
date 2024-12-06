@@ -10,7 +10,7 @@ app.use(express.json());  // Use express.json() only, no need for body-parser
 app.use(cors());
 
 // Database connection
-connectDB();
+// connectDB();
 
 // Routes
 
