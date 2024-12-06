@@ -1,8 +1,11 @@
 const express = require('express');
+require('dotenv').config();
 const router = express.Router();
 const userRoleModel = require('../Model/userRole')
 const userData = require('../Model/userData');
 const getUserListWithKey = require('../Controler/getUserListWithKey');
+const { default: mongoose } = require('mongoose');
+
 
 router.get('/user', (req, res) => {
     return res.json(
@@ -75,6 +78,30 @@ router.post('/setuserData', async (req, res) => {
 router.post('/get-user-list', async (req, res) => {
     await getUserListWithKey(req, res);
 });
+
+router.get('/isdbConnected', async (req, res) => {
+    const mongoURI = process.env.MONGOURI;
+    try {
+        const con = await mongoose.connect(mongoURI);
+        return res.json(
+            {
+                output: 1,
+                jsonResponse: {
+                    mongoURI
+                },
+                message: 'MongoDB Connected',
+                status: 200
+            }
+        )
+    } catch (err) {
+        console.error('Connection Error Details:', {
+            message: err.message,
+            stack: err.stack,
+        });
+        process.exit(1);
+    }
+
+})
 
 
 module.exports = router;

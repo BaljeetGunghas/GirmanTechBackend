@@ -13,7 +13,12 @@ app.use(cors());
 connectDB();
 
 // Routes
+
+app.get('/', (req, res) => {
+    return res.json("App Started")
+})
 app.use('/data', user);
+
 
 // Start server
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
