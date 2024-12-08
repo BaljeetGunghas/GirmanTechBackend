@@ -10,10 +10,20 @@ app.use(express.json());  // Use express.json() only, no need for body-parser
 app.use(cors());
 
 // Database connection
-connectDB();
+console.log('hey');
+
+const handleConnectdb = async () => {
+    await connectDB();
+}
+handleConnectdb();
 
 // Routes
+
+// app.get('/', (req, res) => {
+//     return res.json("App Started")
+// })
 app.use('/data', user);
+
 
 // Start server
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
