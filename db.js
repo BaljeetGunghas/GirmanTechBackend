@@ -7,7 +7,7 @@ const mongoURI = process.env.MONGOURI;
 // Connect to MongoDB
 const connectDB = async () => {
     try {
-       const con= await mongoose.connect("mongodb+srv://baljeetgunghas:baljeetgunghas7017@cluster0.yo703.mongodb.net/userData?retryWrites=true&w=majority&appName=Cluster0");
+       const con= await mongoose.connect(mongoURI);
         console.log('MongoDB Connected');
     } catch (err) {
         console.error('Connection Error Details:', {
